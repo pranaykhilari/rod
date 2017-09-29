@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="form-container text-center">
+        <form method="post" action="{% url 'account_logout' %}">
+            <input type="hidden" name="csrfmiddlewaretoken" value={{ csrf_token }}>
+            <button type="submit" class="btn btn-primary">Sign Out</button>
+        </form>
+    </div>
+</body>
+</html>

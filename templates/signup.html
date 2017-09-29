@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+    <div class="login-form-container">
+        <div class="header text-center">User Registration</div>
+        <div class="form-div">
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <div class="conditions">*To Register you must <a href="#">Accepts Terms and Conditions.</a></div>
+                <div>
+                    <div class="g-recaptcha" data-sitekey="6LcPxSsUAAAAACeewnmcu4iHj1kRnEsZxBguzOc8"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Register" %}</button>
+                <div class="hr-text"><span class="line-center">OR</span></div>
+            </form>
+            <div class="sign-in-text">Already have an account? Then please</div>
+            <div class="signin-link"><a href="{{ login_url }}">Sign In</a></div>
+        </div>
+    </div>
+
+{% endblock %}

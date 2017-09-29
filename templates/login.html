@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+    <script>
+        $(document).ready(function () {
+            $('#id_remember').parent().addClass('inline-check');
+        });
+    </script>
+    <div style="width: 100%">
+        <div class="login-form-container">
+            <div class="header text-center">Login</div>
+            <div class="form-div">
+                <form class="login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <span class="remember-box">stay signed in</span>
+                    <span class="forget-link">
+                    <a class="button secondaryAction"
+                       href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                </span>
+                    <button class="primaryAction btn btn-primary btn-lg btn-block"
+                            type="submit">{% trans "Login" %}</button>
+                    <div class="hr-text"><span class="line-center">OR</span></div>
+                </form>
+                <div class="signup-text">If you haven't created account yet, then please</div>
+                <div class="signup-link"><a href="{% url 'account_signup' %}">Sign Up</a></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

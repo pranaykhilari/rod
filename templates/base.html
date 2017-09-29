@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>{% block head_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {% block extra_head %}
+        <div class="login-form-container site-logo text-center">
+            <img src="{% static 'images/site-logo.png' %}" height="100" width="100" class="img-responsive"
+                 alt="Site Logo Appear Here">
+        </div>
+    {% endblock %}
+
+</head>
+<body>
+{% block body %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>
